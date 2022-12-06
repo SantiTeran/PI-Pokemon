@@ -1,0 +1,19 @@
+.footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    height: 25vh;
+    background-color: #f2f2f2;
+    margin-left: 50px;
+  }
+  
+  .footer p {
+    word-spacing: 1px;
+    padding-bottom: 10px;
+  }
+  
+  .footer a {
+    text-decoration: none;
+    color: #000;
+  }
