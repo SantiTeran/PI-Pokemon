@@ -15,13 +15,12 @@ export const CLEAR_DETAIL = "CLEAR_DETAIL";
 export const GET_DETAIL_FROM_STATE = "GET_DETAIL_FROM_STATE";
 export const SET_ERROR = "SET_ERROR";
 export const DELETE_POKEMON = "DELETE_POKEMON";
-export const EDIT_POKEMON = "EDIT_POKEMON";
 export const CLEAR_HOME = "CLEAR_HOME";
 
 export function getPokemons() {
   return async function (dispatch) {
     try {
-      const json = await axios.get("/pokemons");
+      const json = await axios.get("http://localhost:3001/pokemons");
       return dispatch({
         type: GET_POKEMONS,
         payload: json.data,
@@ -78,7 +77,7 @@ export function resetPokemons() {
 
 export function getTypes() {
   return async function (dispatch) {
-    const json = await axios.get("/type");
+    const json = await axios.get("http://localhost:3001/type");
     return dispatch({
       type: GET_TYPES,
       payload: json.data,
@@ -88,15 +87,15 @@ export function getTypes() {
 
 export function postPokemon(dataPokemon) {
   return async function (dispatch) {
-    const json = await axios.post("/pokemons", dataPokemon);
-    return json;
-  };
+  const json = await axios.post("http://localhost:3001/pokemons", dataPokemon);
+  return json;
+  }
 }
 
-export function getNamePokemon(namePokemon) {
+export function getNamePokemon(name) {
   return async function (dispatch) {
     try {
-      const json = await axios.get(`/pokemons?name=${namePokemon}`);
+      const json = await axios.get(`http://localhost:3001/pokemons?name=${name}`);
       return dispatch({
         type: GET_NAME_POKEMON,
         payload: json.data,
@@ -110,10 +109,11 @@ export function getNamePokemon(namePokemon) {
   };
 }
 
+
 export function getDetail(pokemonId) {
   return async function (dispatch) {
     try {
-      const json = await axios.get(`/pokemons/${pokemonId}`);
+      const json = await axios.get(`http://localhost:3001/pokemons/${pokemonId}`);
       return dispatch({
         type: GET_DETAIL,
         payload: json.data,
@@ -149,6 +149,21 @@ export function setError(payload) {
     payload,
   };
 }
+
+export function deletePokemon(pokemonId) {
+  return async function (dispatch) {
+    try {
+      await axios.delete(`/delete/${pokemonId}`);
+      return dispatch({
+        type: GET_DETAIL,
+      });
+    } catch (error) {
+      console.log("No puedo eliminar el pokemon", error);
+    }
+  };
+}
+
+
 
 
 

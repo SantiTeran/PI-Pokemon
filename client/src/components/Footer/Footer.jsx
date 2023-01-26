@@ -13,7 +13,7 @@ function Footer() {
           <BiCodeAlt />
           &ensp;with&ensp;
           <AiFillHeart /> by{" "}
-          <a href="https://github.com/SantiTeran" target="_blank">
+          <a href="https://www.linkedin.com/in/santiago-teran/" target="_blank" rel="noreferrer">
             Santiago Teran
           </a>{" "}
           using <DiReact />

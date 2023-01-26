@@ -23,12 +23,12 @@ function SearchBar() {
     <div className={styles.search}>
       <input
         type="text"
-        placeholder="Find your pokemon..."
+        placeholder="Search for a Pokemon"
         onChange={(e) => handleInput(e)}
         value={input}
         className={styles.input}
       />
-      <button
+      <button 
         type="submit"
         onClick={(e) => handleSubmit(e)}
         className={styles.searchButton}

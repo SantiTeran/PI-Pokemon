@@ -9,6 +9,10 @@
     justify-content: space-between;
     padding-left: 2rem;
   }
+
+  .text{
+    height: 200px;
+  }
   
   .contIzq {
     display: flex;
@@ -20,24 +24,24 @@
   .contTitle {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1.0rem;
   }
   
   .contDer {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #eb544d;
+    background-color: #3a78ea;
     border-radius: 100% 0% 0% 100%;
     box-shadow: 0px 0px 3px 9px rgba(0, 0, 0, 0.1);
   }
   
   .logo {
-    width: 30%;
+    width: 50%;
     filter: drop-shadow(0px 3px 4px rgba(0, 0, 0, 0.4));
   }
   
-  .charizardImg {
+  .steelixImg {
     min-height: 80%;
     filter: drop-shadow(0px 3px 4px rgba(141, 0, 0, 10));
   }
@@ -49,49 +53,57 @@
     color: #66625c;
   }
   
-  .button {
+  /* .button {
     font-family: "Rubik", sans-serif;
     color: rgb(255, 255, 255);
-    background-color: #eb544d;
-    font-weight: 700;
-    min-height: 40px;
-    min-width: 120px;
+    background-color: #3a78ea;
+    font-size: 40px;
+    font-weight: 2000;
+    min-height: 100px;
+    min-width: 200px;
     border-radius: 2rem;
     cursor: pointer;
     border: none;
   }
   .button:hover {
-    color: rgb(255, 255, 255);
-    background-color: #e93228;
-    border: none;
+    color: rgb(0, 0, 0);
+    background-color: #eff624df;
+    border: none; */
+  /* } */
+  .poke{
+    cursor: pointer;
+    height: 170px;
   }
+
   .parrafo {
     font-family: "Rubik", sans-serif;
     font-weight: 300;
     font-size: clamp(1.3rem, 0.5rem + 5vw, 1.3rem);
   }
   
+
+
   .linkedin {
     max-height: 30px;
-    background-color: #868686;
+    background-color: #3a78ea;
     border-radius: 100%;
     padding: 8px;
   }
   
   .linkedin:hover {
-    background-color: #66625c;
+    background-color: #eff624df;
   }
   
   .github {
     max-height: 30px;
-    background-color: #868686;
+    background-color: #3a78ea;
     border-radius: 100%;
     padding: 8px;
     margin-left: 10px;
   }
   
   .github:hover {
-    background-color: #66625c;
+    background-color: #eff624df;
   }
   
   .links {

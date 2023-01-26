@@ -3,9 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { getPokemons, getTypes, postPokemon } from "../../redux/actions/index";
 import styles from "./CreatePokemon.module.css";
-import ash from "../Images/ash.png";
+import signo from "../Images/signo.png";
 import izq from "../Images/chevron-left2.png";
-import poke from "../Images/poke.png";
+import poke from "../Images/pokeb.png";
+import pikapoke from "../Images/pikapoke.gif";
+
 
 function validate(input) {
   const errors = {};
@@ -141,8 +143,9 @@ function CreatePokemon() {
       </div>
       <div className={styles.contGral}>
         <div className={styles.cardCreate}>
-          <img src={ash} alt="ash" className={styles.ash} />
-          <div className={styles.redTitle}>
+          <img src={signo} alt="signo" className={styles.signo} />
+          <img src={pikapoke} alt="pika" className={styles.pikapoke}></img>
+          <div className={styles.uptitle}>
             <img src={poke} alt="poke" className={styles.poke}></img>
             <div className={styles.title}>Create your pokemon</div>
           </div>

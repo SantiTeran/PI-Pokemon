@@ -1,13 +1,10 @@
 import React, { useEffect } from "react";
-import { Link, useParams} from "react-router-dom";
+import { Link, useParams, useHistory} from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  getDetail,
-  getDetailFromState,
-} from "../../redux/actions/index";
+import {getDetail, getDetailFromState, deletePokemon, getPokemons} from "../../redux/actions/index";
 import styles from "./Details.module.css";
 import "../index.css";
-import pokeball from "../Gifs/pokeball.gif";
+import pokebola from "../../img/pokebola.gif";
 import izq from "../Images/chevron-left2.png";
 
 function Details() {
@@ -18,6 +15,8 @@ function Details() {
 
   const allPokemons = useSelector((state) => state.pokemons);
 
+  const history = useHistory();
+
   useEffect(() => {
     if (allPokemons.length) {
       dispatch(getDetailFromState(id));
@@ -26,6 +25,12 @@ function Details() {
     }
   }, [dispatch, id, allPokemons.length]);
 
+  const handlerDelete = () => {
+    dispatch(deletePokemon(id));
+    alert("Pokemon eliminado");
+    history.push("/home");
+    dispatch(getPokemons());
+  };
 
   return (
     <div>
@@ -144,8 +149,15 @@ function Details() {
                       ></div>
                     </div>
                   </div>
-                  {pokemonDetail[0].createdInDb && (
+                  {pokemonDetail[0].created && (
                     <div className={styles.buttons}>
+
+                      <button
+                        onClick={(e) => handlerDelete(e)}
+                        className={styles.deleteButton}
+                      >
+                        Delete Pokemon
+                      </button>
                     </div>
                   )}
                 </div>
@@ -155,7 +167,7 @@ function Details() {
         </div>
       ) : (
         <div className={styles.poke}>
-          <img src={pokeball} alt="pokeball" className={styles.pokeball} />
+          <img src={pokebola} alt="pokebola" className={styles.pokebola} />
         </div>
       )}
     </div>

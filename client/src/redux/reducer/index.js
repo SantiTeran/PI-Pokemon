@@ -1,21 +1,20 @@
 import {
-    GET_POKEMONS,
-    FILTER_BY_TYPE,
-    FILTER_CREATED,
-    ORDER_BY_NAME,
-    ORDER_BY_ATTACK,
-    SET_CURRENT_PAGE,
-    RESET_POKEMONS,
-    GET_TYPES,
-    GET_NAME_POKEMON,
-    POST_POKEMON,
-    GET_DETAIL,
-    CLEAR_DETAIL,
-    GET_DETAIL_FROM_STATE,
-    SET_ERROR,
-    DELETE_POKEMON,
-    EDIT_POKEMON,
-    CLEAR_HOME,
+  GET_POKEMONS,
+  FILTER_BY_TYPE,
+  FILTER_CREATED,
+  ORDER_BY_NAME,
+  ORDER_BY_ATTACK,
+  SET_CURRENT_PAGE,
+  RESET_POKEMONS,
+  GET_TYPES,
+  GET_NAME_POKEMON,
+  POST_POKEMON,
+  GET_DETAIL,
+  CLEAR_DETAIL,
+  GET_DETAIL_FROM_STATE,
+  SET_ERROR,
+  DELETE_POKEMON,
+  CLEAR_HOME,
   } from "../actions";
   
   const initialState = {
@@ -57,7 +56,7 @@ import {
         const allPokemones = [...state.allPokemons];
         let pokemonesFiltrados;
         if (action.payload === "created") {
-          pokemonesFiltrados = allPokemones.filter((p) => p.createdInDb);
+          pokemonesFiltrados = allPokemones.filter((p) => p.created);
           if (!pokemonesFiltrados.length) {
             return {
               ...state,
@@ -66,7 +65,7 @@ import {
           }
         }
         if (action.payload === "existing") {
-          pokemonesFiltrados = allPokemones.filter((p) => !p.createdInDb);
+          pokemonesFiltrados = allPokemones.filter((p) => !p.created);
         }
         return {
           ...state,
@@ -103,7 +102,7 @@ import {
           currentPage: 1,
           error: false,
         };
-  
+
       case ORDER_BY_ATTACK:
         const allPoke = [...state.pokemons];
         const sortedPokemonAttack =
@@ -181,7 +180,7 @@ import {
           ...state,
           detail: detallesPokemon,
         };
-  
+
       case CLEAR_HOME:
         return {
           ...state,
@@ -199,16 +198,12 @@ import {
           ...state,
           error: action.payload,
         };
+
       case DELETE_POKEMON:
         return {
           ...state,
         };
-  
-      case EDIT_POKEMON:
-        return {
-          ...state,
-        };
-      default:
+        default:
         return { ...state };
     }
   }

@@ -5,7 +5,7 @@ import styles from "./Paginado.module.css";
 import { setCurrentPage } from "../../redux/actions/index";
 import izq from "../Images/chevron-left.png";
 import der from "../Images/chevron-right.png";
-import pokeball from "../Gifs/pokeball.gif";
+import pokeball from "../../img/pokebola.gif";
 
 const renderData = (data) => {
   return data.map((p) => {

@@ -4,7 +4,7 @@ ul {
   }
   
   .cardCreate {
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.307);
     width: 700px;
     min-height: 420px;
     border-radius: 50px;
@@ -19,14 +19,15 @@ ul {
     margin-top: 30px;
   }
   
-  .ash {
-    height: 570px;
+  .signo {
+    height: 250px;
     position: absolute;
-    right: -110px;
+    top: 180px;
+    left: -250px;
   }
   
-  .redTitle {
-    background-color: #eb544d;
+  .uptitle {
+    background-color: #3a78ea;
     width: 100%;
     height: 60px;
     display: flex;
@@ -43,8 +44,14 @@ ul {
   }
   
   .poke {
-    height: 30px;
+    height: 35px;
     margin-left: 30px;
+  }
+
+  .pikapoke {
+    position: absolute;
+    top: 100px;
+    right: -250px;
   }
   
   .izq {
@@ -105,7 +112,7 @@ ul {
   .deleteButton {
     border-radius: 10px;
     border: none;
-    background-color: #eb544d;
+    background-color: #3a78ea;
     color: #fff;
     cursor: pointer;
     font-weight: 700;
@@ -125,12 +132,16 @@ ul {
     height: 30px;
     width: 100px;
     border-radius: 8px;
-    background-color: #eb544d;
+    background-color: #3a78ea;
     color: #fff;
     font-family: "Rubik", sans-serif;
     cursor: pointer;
     border: none;
     margin-top: 5px;
+  }
+
+  .button:hover {
+    background-color: red;
   }
   
   .button:disabled {
@@ -148,12 +159,12 @@ ul {
     display: flex;
     flex-wrap: wrap;
     margin-top: 5px;
-    color: #eb544d;
+    color: red;
   }
   
   .navBar {
-    background-color: #eb544d;
-    height: 50px;
+    background-color: #3a78ea;
+    height: 70px;
     display: flex;
     align-items: center;
     padding-left: 20px;
@@ -165,6 +176,11 @@ ul {
     background-color: transparent;
     border: none;
     font-family: "Rubik", sans-serif;
-    font-size: 15px;
+    font-size: 20px;
     font-weight: 500;
+    height: 30px;
+  }
+  .buttonHome:hover {
+    background-color: red;
+    border-radius: 10px;
   }

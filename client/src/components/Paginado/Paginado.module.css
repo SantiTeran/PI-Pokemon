@@ -27,7 +27,7 @@
   }
   
   .pageNumbers li.active {
-    background-color: #eb544d;
+    background-color: #3a78ea;
     color: white;
     font-weight: 500;
   }
@@ -54,4 +54,7 @@
   
   .pokeball {
     height: 15rem;
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
   }

@@ -2,9 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./LandingPage.module.css";
 import logo from "../Images/pokemon.png";
-import charizard from "../../img/home.jpg";
+import home from "../../img/steelix.gif";
 import linkedin from "../Images/linkedin.png";
 import github from "../Images/github.png";
+import poke from "../Images/pokeb.png"
 
 export default function LandingPage() {
   return (
@@ -15,10 +16,15 @@ export default function LandingPage() {
           <div className={styles.title}>I've been waiting for you</div>
           <div className={styles.parrafo}>
           Let's see some pokemons or create one of your dreams
+          <br />
+          <br />
           </div>
           <Link to="/home">
-            <button className={styles.button}> Go go!</button>
+          <img src={poke} alt="poke" className={styles.poke}></img>
           </Link>
+          <div>
+            CLICK THE POKEBALL TO GO ON!
+          </div>
         </div>
 
         <div className={styles.links}>
@@ -39,7 +45,7 @@ export default function LandingPage() {
       </div>
 
       <div className={styles.contDer}>
-        <img src={charizard} alt="charizard" className={styles.charizardImg} />
+        <img src={home} alt="steelix" className={styles.steelixImg} />
       </div>
     </div>
   );

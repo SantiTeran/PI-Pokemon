@@ -1,12 +1,12 @@
 const axios = require('axios')
 const {Pokemon, Type} = require('../db')
-const {POKEMONS, POKEMON_ID} = require('../utils/constants')
+const {POKEMON} = require('../utils/constants')
+
+let dbId = 40;
 
 const getInfoApi = async () => {
     try {
-      const primerosPokemon = await axios.get(
-        "https://pokeapi.co/api/v2/pokemon"
-      );
+      const primerosPokemon = await axios.get(POKEMON);
       const segundosPokemon = await axios.get(primerosPokemon.data.next);
       const todosPokemon = primerosPokemon.data.results.concat(
         segundosPokemon.data.results
@@ -114,37 +114,80 @@ const getPokemonById = async (req, res) => {
       }
     };
 
-const createPokemon = async (req, res) => {
-    const { hp, attack, defense, speed, height, weight, image, type1, type2 } =
-    req.body;
-  let name = req.body.name.toLowerCase();
-  let pokemon = {
-    name,
-    hp,
-    attack,
-    defense,
-    speed,
-    height,
-    weight,
-    image,
-  };
+    const createPokemon = async (req, res) => {
+      try {
+        const {
+          name,
+          hp,
+          attack,
+          defense,
+          speed,
+          height,
+          weight,
+          image,
+          types,
+          created,
+        } = req.body;
+    
+        let urlDeImagen = "";
+    
+        if (image) {
+          urlDeImagen = image;
+        } else {
+          urlDeImagen =
+            "https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/seasons/season01/season01_ep35_ss01.jpg";
+        }
+    
+        if (name && types.length) {
+          const createPokemon = await Pokemon.create({
+            id: ++dbId,
+            name,
+            hp,
+            attack,
+            defense,
+            speed,
+            height: Number(height),
+            weight: Number(weight),
+            image: urlDeImagen,
+            created,
+          });
+    
+          const typeDb = await Type.findAll({
+            where: { name: types },
+          });
+    
+          createPokemon.addType(typeDb);
+          res.status(200).send("Pokemon creado con exito");
+        } else {
+          res.status(400).send("Faltaron datos para crear el pokemon");
+        }
+      } catch (error) {
+        console.log("entre al error del post", error);
+      }
+    };
+
+const deletePokemon = async (req, res) => {
+  const { id } = req.params;
   try {
-    let createdPokemon = await Pokemon.create(pokemon);
-    const addType1 = await createdPokemon.addType(type1, {
-      through: "pokemon_type",
-    });
-    const addType2 = await createdPokemon.addType(type2, {
-      through: "pokemon_type",
-    });
-    return res.status(200).send("El pokemon ha sido creado correctamente");
-    }catch(error){
-        console.log(error);
+    const pokemonDelete = await Pokemon.findByPk(id);
+    if (!pokemonDelete) {
+      res.status(400).send("No existe el pokemon que deseas eliminar");
+    } else {
+      pokemonDelete.destroy();
+      return res.status(200).send("Pokemon eliminado correctamente");
     }
+  } catch (error) {
+    res.status(400).json({ error: error.message }, "Entré al error de delete");
+  }
 };
+
 
 module.exports = {
     getAllPokemons,
+    getInfoDb,
+    getInfoApi,
     getPokemons,
     createPokemon,
     getPokemonById,
+    deletePokemon,
 };
